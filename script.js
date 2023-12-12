@@ -100,8 +100,11 @@ function handleTouchStart(e) {
 }
 
 function jump() {
-    img.src = 'images/Bird-2.png';
-    bird_dy = -8.5;
+    if (jumpCount < 2) { // Limit the number of consecutive jumps for better control
+        img.src = 'images/Bird-2.png';
+        bird_dy = -8.5;
+        jumpCount++;
+    }
 }
 
 function resetGame() {
