@@ -19,22 +19,64 @@ let game_state = 'Start';
 img.style.display = 'none';
 message.classList.add('messageStyle');
 //For controls
-document.addEventListener('keydown', (e) => {
+// document.addEventListener('keydown', (e) => {
     
-    if(e.key == 'Enter' && game_state != 'Play'){
-        document.querySelectorAll('.pipe_sprite').forEach((e) => {
-            e.remove();
-        });
-        img.style.display = 'block';
-        bird.style.top = '40vh';
-        game_state = 'Play';
-        message.innerHTML = '';
-        score_title.innerHTML = 'Score : ';
-        score_val.innerHTML = '0';
-        message.classList.remove('messageStyle');
-        play();
+//     if(e.key == 'Enter' || e.key=='touchend' && game_state != 'Play'){
+//         document.querySelectorAll('.pipe_sprite').forEach((e) => {
+//             e.remove();
+//         });
+//         img.style.display = 'block';
+//         bird.style.top = '40vh';
+//         game_state = 'Play';
+//         message.innerHTML = '';
+//         score_title.innerHTML = 'Score : ';
+//         score_val.innerHTML = '0';
+//         message.classList.remove('messageStyle');
+//         play();
+//     }
+// });
+
+
+
+document.addEventListener('keydown', handleKeyPress);
+document.addEventListener('touchstart', handleTouchStart);
+
+function handleKeyPress(e) {
+    if (e.key === 'Enter' && game_state !== 'Play') {
+        resetGame();
+    } else if (e.key === 'ArrowUp' || e.key === ' ') {
+        jump();
     }
-});
+}
+
+function handleTouchStart() {
+    if (game_state !== 'Play') {
+        resetGame();
+    } else {
+        jump();
+    }
+}
+
+function jump() {
+    img.src = 'images/Bird-2.png';
+    bird_dy = -8.5;
+}
+
+function resetGame() {
+    document.querySelectorAll('.pipe_sprite').forEach((e) => {
+        e.remove();
+    });
+    img.style.display = 'block';
+    bird.style.top = '40vh';
+    game_state = 'Play';
+    message.innerHTML = '';
+    score_title.innerHTML = 'Score: ';
+    score_val.innerHTML = '0';
+    message.classList.remove('messageStyle');
+    play();
+}
+
+
 
 function play(){
     function move(){
@@ -79,7 +121,7 @@ function play(){
         document.addEventListener('keydown', (e) => {
             if(e.key == 'ArrowUp' || e.key == ' '){
                 img.src = 'images/Bird-2.png';
-                bird_dy = -7.5;
+                bird_dy = -8.5;
             }
         });
 
