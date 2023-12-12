@@ -49,12 +49,25 @@ function handleKeyPress(e) {
     }
 }
 
+
+let lastClickTime = 0;
+
 function handleTouchStart() {
-    if (game_state !== 'Play') {
+    // if (game_state !== 'Play') {
+    //     resetGame();
+    // } else {
+    //     jump();
+    // }
+    let currentTime = new Date().getTime();
+    let timeDifference = currentTime - lastClickTime;
+    
+    if (timeDifference < 300 && game_state !== 'Play') {
         resetGame();
     } else {
         jump();
     }
+
+    lastClickTime = currentTime;
 }
 
 function jump() {
