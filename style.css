@@ -82,22 +82,22 @@
 }
 @media (max-width: 768px) {
     .message {
-        font-size: 4vw; /* Adjusted font size for responsiveness */
-    }
-
-    .score {
-        font-size: 4vw; /* Adjusted font size for responsiveness */
-        height: 8vw; /* Adjusted height for responsiveness */
-    }
-
-    .bird {
-        height: 6vw; /* Adjusted height for responsiveness */
-    }
-
-    .pipe_sprite {
-        height: 25vh; /* Adjusted height for responsiveness */
-        width: 2.5vw; /* Adjusted width for responsiveness */
-    }
+			font-size: 4vw; /* Adjusted font size for responsiveness */
+		}
+	
+		.score {
+			font-size: 4vw; /* Adjusted font size for responsiveness */
+			height: 8vw; /* Adjusted height for responsiveness */
+		}
+	
+		.bird {
+			height: 6vw; /* Adjusted height for responsiveness */
+		}
+	
+		.pipe_sprite {
+			height: 25vh; /* Adjusted height for responsiveness */
+			width: 2.5vw; /* Adjusted width for responsiveness */
+		}
     .background {
         background-size: cover;
         background-position: center;

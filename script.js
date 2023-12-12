@@ -36,7 +36,22 @@ message.classList.add('messageStyle');
 //     }
 // });
 
+let audioStarted = false;
 
+document.addEventListener('click', startAudio);
+function startAudio() {
+    if (!audioStarted) {
+        sound_point.play();
+        sound_die.play();
+        audioStarted = true;
+    }
+
+    document.removeEventListener('click', startAudio);
+    document.removeEventListener('touchstart', startAudio);
+}
+
+// For mobile touch events
+document.addEventListener('touchstart', startAudio)
 
 document.addEventListener('keydown', handleKeyPress);
 document.addEventListener('touchstart', handleTouchStart);
@@ -52,12 +67,26 @@ function handleKeyPress(e) {
 
 let lastClickTime = 0;
 
-function handleTouchStart() {
-    // if (game_state !== 'Play') {
-    //     resetGame();
-    // } else {
-    //     jump();
-    // }
+// function handleTouchStart() {
+//     // if (game_state !== 'Play') {
+//     //     resetGame();
+//     // } else {
+//     //     jump();
+//     // }
+//     let currentTime = new Date().getTime();
+//     let timeDifference = currentTime - lastClickTime;
+    
+//     if (timeDifference < 300 && game_state !== 'Play') {
+//         resetGame();
+//     } else {
+//         jump();
+//     }
+
+//     lastClickTime = currentTime;
+// }
+
+function handleTouchStart(e) {
+    e.preventDefault(); // Prevent default behavior to avoid unwanted scrolling
     let currentTime = new Date().getTime();
     let timeDifference = currentTime - lastClickTime;
     
